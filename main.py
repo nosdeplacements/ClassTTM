@@ -33,7 +33,7 @@ def write_message():
     message += u"%s: %s\n" % (app_text.question[8], st.session_state.ans[8].replace("\n", ". "))
     message += u"\n"
     
-    os.system("mail -s 'Enquete TTM' cedric.twardz@gmail.com <<< " + message)
+    os.system("mail -s 'Enquete TTM' cedric.twardz@gmail.com <<< Hello")
     
 # Routine for the first page
 def page_one():
