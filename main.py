@@ -29,8 +29,11 @@ def write_message():
     message += u"%s: %s\n" % (app_text.question[6], st.session_state.ans[6].replace("\n", ". "))
     message += u"%s: %s\n" % (app_text.question[7], st.session_state.ans[7][0])
     message += u"%s: %s\n" % (app_text.question[8], st.session_state.ans[8].replace("\n", ". "))
-    open('reponses_%s_%s' % (st.session_state.id, st.session_state.date), 'w+').write('%s' % message)
-
+    
+    f = open('reponses_%s_%s' % (st.session_state.id, st.session_state.date), 'w+')
+    f.write('%s' % message)
+    f.close()
+    
 # Routine for the first page
 def page_one():
 
