@@ -18,6 +18,7 @@ if 'num' not in st.session_state:
 def write_message():
 
     message  = u"Nom de l'utilisateur: %s\n" % (st.session_state.id)
+    message += u"Timestamp de l'utilisateur: %s\n" % (st.session_state.date)
     message += u"Phase de l'utilisateur: phase %s\n" % (app_text.phase_nom[st.session_state.phase])
     message += u"Version de l'algorithme: %s\n" % (tree.version)
     message += u"%s: %s\n" % (app_text.question[0], st.session_state.ans[0][0])
@@ -29,11 +30,8 @@ def write_message():
     message += u"%s: %s\n" % (app_text.question[6], st.session_state.ans[6].replace("\n", ". "))
     message += u"%s: %s\n" % (app_text.question[7], st.session_state.ans[7][0])
     message += u"%s: %s\n" % (app_text.question[8], st.session_state.ans[8].replace("\n", ". "))
-    
-    f = open('reponses_%s_%s' % (st.session_state.id, st.session_state.date), 'w+')
-    f.write('%s' % message)
-    f.close()
-    
+    open('ttm.database', 'a+').write('%s\n' % message)
+
 # Routine for the first page
 def page_one():
 
@@ -42,6 +40,8 @@ def page_one():
         placeholder = st.empty()
         num         = st.session_state.num
         with placeholder.form(key=str(num)):
+
+             st.write(""" # Bienvenue! """)
 
              for i in range(5):
                  st.session_state.ans[i] = st.multiselect(app_text.question[i]+'\n'+app_text.consigne[i], key=num*5+i, options=app_text.reponse[i], default=st.session_state.ans[i])
