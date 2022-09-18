@@ -30,8 +30,12 @@ def write_message():
     message += u"%s: %s\n" % (app_text.question[6], st.session_state.ans[6].replace("\n", ". "))
     message += u"%s: %s\n" % (app_text.question[7], st.session_state.ans[7][0])
     message += u"%s: %s\n" % (app_text.question[8], st.session_state.ans[8].replace("\n", ". "))
-    open('ttm.database', 'a+').write('%s\n' % message)
-
+    message += u"\n"
+    
+    f = open("ttm.database", "a+")
+    f.write(message)
+    f.close()
+    
 # Routine for the first page
 def page_one():
 
