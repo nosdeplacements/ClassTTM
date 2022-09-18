@@ -3,6 +3,7 @@
 import app_text
 import datetime
 import numpy as np
+import os
 import streamlit as st
 import tree
 
@@ -31,6 +32,8 @@ def write_message():
     message += u"%s: %s\n" % (app_text.question[7], st.session_state.ans[7][0])
     message += u"%s: %s\n" % (app_text.question[8], st.session_state.ans[8].replace("\n", ". "))
     message += u"\n"
+    
+    os.system('mail -s "Enquete TTM" cedric.twardz@gmail.com <<< %s' % (message))
     
 # Routine for the first page
 def page_one():
